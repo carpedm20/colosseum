@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% load staticfiles %}
+
+<div class="overlay" /> </div>
+
+<div class="pull-right sign-in-search">
+  <form class="form-search form-inline">
+    <input type="text" class="form-control search-query" placeholder="Search..." />
+  </form>
+</div>
+
+<div class="v-center">
+  <h1 class="logo login_and_register_logo size_large" id="logo">
+    <a class="logo_anchor" href="{% url 'core:index' %}">
+      <img class="sign-in-logo" src="{% static 'img/unicon_logo.png' %}">
+    </a>
+  </h1>
+
+  <form role="form-horizontal" action="{% url 'account:sign_up' %}" method="post">{% csrf_token %}
+    <div class="fieldWrapper">
+      {{ form.username }}
+    </div>
+    <div class="fieldWrapper">
+      {{ form.password }}
+    </div>
+    <button class="btn-sign-in btn-sign-in-big chrome blue container-full" type="submit">Sign up</button>
+  </form>
+</div>
+
+
+
+{% endblock %}
