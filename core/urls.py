@@ -5,6 +5,6 @@ urlpatterns = patterns('',
     # url(r'^$', 'studyplan.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
 
-    url(r'^$', 'challenge.views.index', name='index'),
-    url(r'^home/$', 'challenge.views.index', name='home'),
+    url(r'^$', 'core.views.index', name='index'),
+    url(r'^home/$', 'core.views.index', name='home'),
 )

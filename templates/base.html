@@ -109,10 +109,10 @@
             <a class="navbar-brand" style="font-family: 'Bookman Old Style', serif; color:white; font-weight:bold; font-size: 45px;" href="/"><img src="{% static 'img/unicon_logo.png' %}" class="unicon-logo"/></a>
             <ul class="nav navbar-nav navbar-left">
               <li>
-                <button type="button" class="btn-sign-in chrome blue nav-not-li">
+                <button type="button" class="btn-sign-in chrome blue nav-not-li" onclick="location.href='{% url 'account:sign_up' %}'">
                   가입
                 </button>
-                <button type="button" class="btn-sign-in chrome blue on_dark nav-not-li">
+                <button type="button" class="btn-sign-in chrome blue on_dark nav-not-li" onclick="location.href='{% url 'account:sign_in' %}'">
                   로그인
                 </button>
               </li>

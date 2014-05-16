@@ -85,7 +85,7 @@ def sign_in(request):
 
 def sign_in_view(request):
     form = AccountAuthForm(request.POST or None)
-    template = 'sign_in.html'
+    template = 'account/sign_in.html'
 
     return render(request, template, {'form': form, 'nav_bar': True,})
     
@@ -95,6 +95,7 @@ def sign_in_view(request):
 ########################
 
 def sign_up(request):
+    
     if request.method == 'POST':
         form = AccountCreateForm(request.POST)
         if form.is_valid():

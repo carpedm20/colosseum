@@ -1,0 +1,242 @@
+/**********************
+   If nav bar exist
+ **********************/
+
+body.body-with-nav-bar {
+  padding-top: 50px;
+  padding-bottom: 20px;
+}
+
+body {
+  font-family: Arial, 'Nanum Gothic', sans-serif;
+
+  /**********************
+     General
+   **********************/
+
+  .container-full {
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  div.overlay {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+    opacity: .8;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0,0,0,0.3);
+    background-size: cover;
+  }
+
+  /**********************
+     Logo
+   **********************/
+
+  .unicon-logo {
+    height: 40px;
+    margin-top: -14px;
+  }
+
+  #logo.size_large {
+    text-align:center;
+    height: 90px;
+  }
+
+  #logo .logo_anchor {
+    overflow: hidden;
+    text-indent: -999em;
+    height: 100%;
+    background-repeat: no-repeat;
+  }
+
+  .sign-in-logo {
+    height: 100%;
+  }
+
+  /**********************
+     navbar button
+   **********************/
+
+  .btn-sign-in {
+    height: 25px;
+    min-width: 100px;
+    text-align: center;
+    line-height: 1.6;
+    font-size: 15px;
+    border-radius: 2px;
+    margin-right: 10px;
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    -ms-box-sizing: content-box;
+    -o-box-sizing: content-box;
+    box-sizing: content-box;
+
+    text-decoration: none!important;
+  }
+
+  .chrome {
+    cursor: pointer;
+    font-family: "Helvetica Neue",Arial,Helvetica,sans-serif;
+    color: #fff;
+    font-size: 13px;
+    line-height: 14px;
+    height: 25px;
+    padding: 4px 7px 5px 7px;
+    font-weight: bold;
+    border-width: 1px;
+    border-style: solid;
+    text-decoration: none;
+    -webkit-font-smoothing: antialiased;
+    border-radius: 2px;
+    border-color: #9da6af;
+    background: #9da6af;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: -moz-none;
+    -o-user-select: none;
+  }
+
+  .blue {
+    border-color: #529ecc;
+    background: #529ecc;
+  }
+
+  .on_dark {
+    background: rgba(255,255,255,0.25);
+    border-color: transparent;
+  }
+
+  /**********************
+     sign-in search bar
+   **********************/
+
+  .sign-in-search {
+    margin-top: 30px;
+    padding-right: 60px;
+  }
+
+  .sign-in-search .search-query {
+    opacity: 0.5;
+  }
+
+  .search-query:focus {
+    opacity: 1;
+  }
+
+  .v-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -200px;
+    margin-left: -113px;
+    width: 260px;
+    height: 200px;
+  }
+
+  /**********************
+     sign-in input
+   **********************/
+
+  .sign-in-input {
+    width: 100%;
+    padding: 11px 10px 11px 13px;
+    display: block;
+    margin: 0;
+    border: 0;
+    background: 0;
+    font: 16px/1.4 "Helvetica Neue","HelveticaNeue",Helvetica,Arial,sans-serif;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    background: white;
+  }
+
+  .btn-sign-in-big {
+    margin-right: 0px;
+    padding: 0;
+    margin-top: 20px;
+    line-height: 32px;
+    height: 40px;
+    font-size: 16px;
+  }
+
+  .form_row {
+    position: relative;
+    border-top: 1px solid #e3e3e3;
+  }
+
+  /**********************
+     navbar 
+   **********************/
+
+  .navbar.transparent.navbar-inverse .navbar-inner {
+     background: rgba(0,0,0,0.4);
+  }
+
+  /**********************
+     navbar 
+   **********************/
+
+  .navbar-brand,
+  .navbar-nav li a {
+    line-height: 70px;
+    height: 70px;
+    padding-top: 0;
+  }
+
+
+  .navbar-custom {
+    background: #2c4762 url('/images/background.png?58a0aa3d93e8f1605130284b0b6e6ec5') top repeat-x;
+  }
+
+  /**********************
+     navbar search form
+   **********************/
+
+  button.nav-not-li, form.nav-not-li {
+    margin-top: 17px;
+  }
+
+  .navbar-right-search {
+    margin-right: 15px !important;
+  }
+
+  input.search-query {
+    padding-left:26px;
+  }
+
+  form.form-search {
+    position: relative;
+  }
+
+  form.form-search:before {
+    display: block;
+    width: 14px;
+    height: 14px;
+    content: "\e003";
+    font-family: 'Glyphicons Halflings';
+    background-position: -48px 0;
+    position: absolute;
+    top:8px;
+    left:8px;
+    opacity: .5;
+    z-index: 1000;
+
+    margin-right:20px;
+  }
+
+  /**********************
+    Image grid layout
+   **********************/
+
+  .item { width: 25%; }
+  .item.w2 { width: 50%; }
+
+}
+
