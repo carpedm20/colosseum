@@ -31,7 +31,7 @@ def index(request):
     return render_to_response(template, locals(), context_instance=context)
 
 @login_required
-def home(request):
+def home(request, challenge_id = None):
     template = 'home.html'
 
     challenges = Challenge.objects.all().order_by('start_date')[:4]
@@ -44,10 +44,15 @@ def home(request):
         else:
             challenge.active = False
 
+    if challenge_id is None:
+        current_challenge = challenges[len(challenges)-1]
+    else:
+        current_challenge = Challenge.objects.get(id=chalenge_id)
+
     return render(request,
                   template,
-                  {'challenges' : challenges, })
-    
+                  {'challenges': challenges,
+                   'current_challenge': current_challenge })
 
 def about(request):
     pass

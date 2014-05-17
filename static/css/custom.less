@@ -7,6 +7,8 @@
 
 @base: @base-color url('/images/background.png?58a0aa3d93e8f1605130284b0b6e6ec5') top repeat-x;
 
+@almost-black: #444;
+
 body.body-with-nav-bar {
   padding-top: 72px;
   padding-bottom: 20px;
@@ -181,7 +183,8 @@ body {
    **********************/
 
   .sign-in-input {
-    color: black;
+    color: @almost-black;
+
     width: 100%;
     padding: 11px 10px 11px 13px;
     display: block;
@@ -280,6 +283,40 @@ body {
 
   .challenge-schedule-date {
     font-size: 0.5em;
+  }
+
+  .challenge-info {
+    background: #fff;
+    clear: both;
+
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-right: 20px;
+    padding-left: 20px;
+
+    color: @almost-black;
+
+    font-size: 14px;
+    border-radius: 5px;
+    word-wrap: break-word;
+    border-radius: 6px;
+  }
+
+  .challenge-info-thumbnail {
+    width: 90px;
+    height: auto;
+    margin-bottom: 0px;
+  }
+
+  .challenge-info-right {
+    margin-top: 2px;
+  }
+
+  .challenge-info-right > div button {
+    margin-bottom: 10px;
+  }
+  .challenge-info-header {
+    margin-top: 0px;
   }
 
   /**********************

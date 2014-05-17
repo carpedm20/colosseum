@@ -29,7 +29,30 @@
         {% endfor %}
       </tr>
     </table>
-    Main content goes here
+    <div class="challenge-info media">
+      <h2 class="challenge-info-header text-center">THIS WEEK HACKATHON</h2>
+        <img src="{{ current_challenge.thumbnail_url }}" class="challenge-info-thumbnail media-object thumbnail pull-left"/>
+        <div class="media-body">
+          <div class="media-heading">
+            <h1 class="pull-left">{{ current_challenge.subject }}</h1>
+            <div class="challenge-info-right pull-right">
+              <div>
+                <button class="btn btn-primary">
+                  <span class="glyphicon glyphicon-user"></span> User
+                  <span class="badge">{{ current_challenge.account_set.count }}</span>
+                </button>
+              </div>
+              <div>
+                <button class="btn btn-info">
+                  <span class="glyphicon glyphicon-star"></span> Star
+                  <span class="badge">4</span>
+                </button>
+                </div>
+            </div>
+          </div>
+        </div>
+      {{ current_challenge.details }}
+    </div>
   </div>
 
 {% endblock %}
