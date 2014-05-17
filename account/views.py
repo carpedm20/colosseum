@@ -63,8 +63,8 @@ def follow(request):
 ########################
 
 def sign_in(request):
-    form = AccountAuthForm(data=request.POST)
-    template = 'sign_in.html'
+    form = AccountAuthForm(request.POST or None)
+    template = 'account/sign_in.html'
 
     if request.method == 'POST':
         if form.is_valid():
@@ -74,32 +74,20 @@ def sign_in(request):
 
             return redirect('/')
         else:
-            # Failure
-            return sign_in_view(request)
-
-    return sign_in_view(request)
-
-##############################
-# Sign in View (Log in View)
-##############################
-
-def sign_in_view(request):
-    form = AccountAuthForm(request.POST or None)
-    template = 'account/sign_in.html'
+            return render(request, template, {'form': form, 'nav_bar': True,})
 
     return render(request, template, {'form': form, 'nav_bar': True,})
-    
 
 ########################
 # Sign up (Join)
 ########################
 
 def sign_up(request):
-    
+    form = AccountCreateForm(request.POST or None)
+    template = 'account/sign_up.html'
+
     if request.method == 'POST':
-        form = AccountCreateForm(request.POST)
         if form.is_valid():
-            # `commit=False`: before save it to database, just keep it in memory
             username = form.clean_username()
             password = form.clean_password2()
             new_user = form.save()
@@ -107,10 +95,10 @@ def sign_up(request):
             login(request, user)
 
             return redirect("/")
-    else:
-        form = AccountCreateForm() 
+        else:
+            return render(request, template, {'form': form, 'nav_bar': True,})
 
-    return render(request, "sign_up.html",  {'form': form,  'nav_bar': True,})
+    return render(request, template,  {'form': form,  'nav_bar': True,})
 
 ########################
 # Sign out (Log out)
@@ -119,5 +107,5 @@ def sign_up(request):
 @login_required
 def sign_out(request):
     logout(request)
-    #messages.success(request, 'You have successfully logged out.')
+
     return redirect('/')

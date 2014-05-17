@@ -2,8 +2,12 @@
    If nav bar exist
  **********************/
 
+@base-color: #2c4762;
+
+@base: @base-color url('/images/background.png?58a0aa3d93e8f1605130284b0b6e6ec5') top repeat-x;
+
 body.body-with-nav-bar {
-  padding-top: 50px;
+  padding-top: 80px;
   padding-bottom: 20px;
 }
 
@@ -14,9 +18,40 @@ body {
      General
    **********************/
 
+  background: @base;
+
+  #container {
+    width: 900px;
+    margin: auto;
+    padding: 0 30px;
+  }
+
+  #content {
+    min-height: 425px;
+    padding: 20px;
+    background: @base;
+    border-radius: 15px;
+  }
+
   .container-full {
     margin: 0 auto;
     width: 100%;
+  }
+
+  #right_column {
+    position: relative;
+    background-color: inherit;
+    float: right;
+    width: 215px;
+    color: #fff;
+    margin-top: -7px;
+    margin-right: -1px;
+    padding-bottom: 20px;
+  }
+
+  #left_column {
+    float: left;
+    width: 625px;
   }
 
   div.overlay {
@@ -192,7 +227,13 @@ body {
 
 
   .navbar-custom {
-    background: #2c4762 url('/images/background.png?58a0aa3d93e8f1605130284b0b6e6ec5') top repeat-x;
+    background: @base;
+    border-color: @base-color;
+    margin-bottom: 0px;
+
+    width: 900px;
+    margin: auto;
+    padding: 0 30px;
   }
 
   /**********************

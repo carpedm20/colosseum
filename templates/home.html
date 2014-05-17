@@ -4,34 +4,11 @@
 
 {% load staticfiles %}
 
-<div id="container">
-  <div class="item">
-    <img class="container-full" src="{% static 'img/unicon_logo_color.png' %}" />
+  <div id="right_column">
+    {% include 'right_nav.html' %}
   </div>
-  <div class="item w2">
-    <img class="container-full" src="{% static 'img/unicon_logo_color.png' %}" />
+  <div id="left_column">
+    Main content goes here
   </div>
-  <div class="item">
-    <img class="container-full" src="{% static 'img/unicon_logo_color.png' %}" />
-  </div>
-  <div class="item">
-    <img class="container-full" src="{% static 'img/unicon_logo_color.png' %}" />
-  </div>
-  <div class="item w2">
-    <img class="container-full" src="{% static 'img/unicon_logo_color.png' %}" />
-  </div>
-  <div class="item">
-    <img class="container-full" src="{% static 'img/unicon_logo_color.png' %}" />
-  </div>
-  <div class="item">
-    <img class="container-full" src="{% static 'img/unicon_logo_color.png' %}" />
-  </div>
-  <div class="item w2">
-    <img class="container-full" src="{% static 'img/unicon_logo_color.png' %}" />
-  </div>
-  <div class="item">
-    <img class="container-full" src="{% static 'img/unicon_logo_color.png' %}" />
-  </div>
-</div>
 
 {% endblock %}

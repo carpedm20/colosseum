@@ -107,6 +107,7 @@
               <span class="icon-bar"></span>
             </button>
             <a class="navbar-brand" style="font-family: 'Bookman Old Style', serif; color:white; font-weight:bold; font-size: 45px;" href="/"><img src="{% static 'img/unicon_logo.png' %}" class="unicon-logo"/></a>
+            {% if not user.is_authenticated %}
             <ul class="nav navbar-nav navbar-left">
               <li>
                 <button type="button" class="btn-sign-in chrome blue nav-not-li" onclick="location.href='{% url 'account:sign_up' %}'">
@@ -117,6 +118,7 @@
                 </button>
               </li>
             </ul>
+            {% endif %}
           </div>
           <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right navbar-right-search">
@@ -133,17 +135,17 @@
     <body>
   {% endif %}
 
-    {% block content %} {% endblock %}
+  <div id="container">
+    <div id="content">
+      {% block content %} {% endblock %}
+    </div>
 
     <div class="footer">
-      <div class="container">
-        <div class="text-center">
-          
-          Copyright © 2014 두 얼간이
-
-        </div>
+      <div class="text-center">
+        Copyright © 2014 두 얼간이
       </div>
     </div>
+  </div>
   
     <!-- Bootstrap core JavaScript
     ================================================== -->

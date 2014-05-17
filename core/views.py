@@ -6,6 +6,7 @@ from django.shortcuts import render, redirect, render_to_response, RequestContex
 from account.models import Account
 from account.forms import AccountCreateForm
 from challenge.models import Challenge, Tag
+from utils.func import get_account_from_user
 
 def index(request):
     index_template = 'index.html'
