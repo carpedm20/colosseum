@@ -8,6 +8,27 @@
     {% include 'right_nav.html' %}
   </div>
   <div id="left_column">
+    <table class="table table-bordered col-sm-16">
+      <tr class="">
+        {% for challenge in challenges %}
+          {% if challenge.active %}
+            <td class="col-sm-3 info">
+          {% else %}
+            <td class="col-sm-3">
+          {% endif %}
+            <div>
+              <div class="challenge-schedule-date">
+                {{ challenge.start_date }} ~ {{ challenge.finish_date }}
+              </div>
+              <div>
+                <img src=""/>
+                {{ challenge.subject }}
+              </div>
+            </div>
+          </td>
+        {% endfor %}
+      </tr>
+    </table>
     Main content goes here
   </div>
 

@@ -98,36 +98,38 @@
   {% if not nav_bar %}
     <body class="body-with-nav-bar">
       <div class="navbar navbar-inverse navbar-custom navbar-fixed-top" role="navigation">
-        <div class="container-fluid col-sm-15">
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" style="font-family: 'Bookman Old Style', serif; color:white; font-weight:bold; font-size: 45px;" href="/"><img src="{% static 'img/unicon_logo.png' %}" class="unicon-logo"/></a>
-            {% if not user.is_authenticated %}
-            <ul class="nav navbar-nav navbar-left">
-              <li>
-                <button type="button" class="btn-sign-in chrome blue nav-not-li" onclick="location.href='{% url 'account:sign_up' %}'">
-                  가입
-                </button>
-                <button type="button" class="btn-sign-in chrome blue on_dark nav-not-li" onclick="location.href='{% url 'account:sign_in' %}'">
-                  로그인
-                </button>
-              </li>
-            </ul>
-            {% endif %}
-          </div>
-          <div class="navbar-collapse collapse">
-            <ul class="nav navbar-nav navbar-right navbar-right-search">
-              <li>
-                <form class="form-search form-inline nav-not-li">
-                  <input type="text" class="form-control search-query" placeholder="Search..." />
-                </form>
-              </li>
-            </ul>
+        <div class="navbar-content">
+          <div class="container-fluid col-sm-15">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" style="font-family: 'Bookman Old Style', serif; color:white; font-weight:bold; font-size: 45px;" href="/"><img src="{% static 'img/unicon_logo.png' %}" class="unicon-logo"/></a>
+              {% if not user.is_authenticated %}
+              <ul class="nav navbar-nav navbar-left">
+                <li>
+                  <button type="button" class="btn-sign-in chrome blue navbar-btn nav-not-li" onclick="location.href='{% url 'account:sign_up' %}'">
+                    가입
+                  </button>
+                  <button type="button" class="btn-sign-in chrome blue on_dark navbar-btn nav-not-li" onclick="location.href='{% url 'account:sign_in' %}'">
+                    로그인
+                  </button>
+                </li>
+              </ul>
+              {% endif %}
+            </div>
+            <div class="navbar-collapse collapse">
+              <ul class="nav navbar-nav navbar-right navbar-right-search">
+                <li>
+                  <form class="form-search form-inline nav-not-li">
+                    <input type="text" class="form-control search-query" placeholder="Search..." />
+                  </form>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
@@ -135,18 +137,25 @@
     <body>
   {% endif %}
 
-  <div id="container">
-    <div id="content">
-      {% block content %} {% endblock %}
-    </div>
 
-    <div class="footer">
-      <div class="text-center">
-        Copyright © 2014 두 얼간이
+  {% if not user.is_authenticated %}
+    <div class="container">
+      {% block unauthenticated_content %} {% endblock %}
+    </div>
+  {% else %}
+    <div id="container">
+      <div id="content">
+        {% block content %} {% endblock %}
+      </div>
+
+      <div class="footer">
+        <div class="text-center">
+          Copyright © 2014 두 얼간이
+        </div>
       </div>
     </div>
-  </div>
-  
+  {% endif %}
+
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->

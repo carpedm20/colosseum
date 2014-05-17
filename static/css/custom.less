@@ -3,11 +3,12 @@
  **********************/
 
 @base-color: #2c4762;
+@base-light-color: #355471;
 
 @base: @base-color url('/images/background.png?58a0aa3d93e8f1605130284b0b6e6ec5') top repeat-x;
 
 body.body-with-nav-bar {
-  padding-top: 80px;
+  padding-top: 72px;
   padding-bottom: 20px;
 }
 
@@ -18,12 +19,16 @@ body {
      General
    **********************/
 
-  background: @base;
+  background: @base-light-color;
 
   #container {
     width: 900px;
     margin: auto;
-    padding: 0 30px;
+  }
+
+  .container-full {
+    margin: 0 auto;
+    width: 100%;
   }
 
   #content {
@@ -31,11 +36,8 @@ body {
     padding: 20px;
     background: @base;
     border-radius: 15px;
-  }
-
-  .container-full {
-    margin: 0 auto;
-    width: 100%;
+    margin: auto;
+    color: white;
   }
 
   #right_column {
@@ -179,6 +181,7 @@ body {
    **********************/
 
   .sign-in-input {
+    color: black;
     width: 100%;
     padding: 11px 10px 11px 13px;
     display: block;
@@ -214,9 +217,10 @@ body {
      background: rgba(0,0,0,0.4);
   }
 
-  /**********************
-     navbar 
-   **********************/
+  .navbar-content {
+    width: 900px;
+    margin: 0 auto;
+  }
 
   .navbar-brand,
   .navbar-nav li a {
@@ -227,13 +231,11 @@ body {
 
 
   .navbar-custom {
-    background: @base;
-    border-color: @base-color;
+    background: @base-light-color;
+    border-color: @base-light-color;
     margin-bottom: 0px;
 
-    width: 900px;
     margin: auto;
-    padding: 0 30px;
   }
 
   /**********************
@@ -270,6 +272,14 @@ body {
     z-index: 1000;
 
     margin-right:20px;
+  }
+
+  /**********************
+    Image grid layout
+   **********************/
+
+  .challenge-schedule-date {
+    font-size: 0.5em;
   }
 
   /**********************

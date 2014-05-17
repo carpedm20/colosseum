@@ -1,32 +1,33 @@
 from django.db import models
 
 from tag.models import Tag
+from account.models import Account
 
 import datetime
 
 week = datetime.timedelta(days=7)
 
 class ChallengeManager(models.Manager):
-    def create_challenge(self, start_date, subject, detail, thumbnail_url, tag_set):
+    def create_challenge(self, start_date, subject, detail, thumbnail_url):
         chall = self.create(start_date = start_date,
                             finish_date = start_date + week,
                             subject = subject,
                             detail = detail,
-                            thumbnail_url = thumbnail_url,
-                            tag_Set = tag_set)
+                            thumbnail_url = thumbnail_url)
 
         return chall
 
 # Create your models here.
 class Challenge(models.Model):
-    start_date = models.DateField(auto_now=True)
-    finish_date = models.DateField(auto_now=True)
+    start_date = models.DateField()
+    finish_date = models.DateField()
 
     subject = models.CharField(max_length = 50)
     detail = models.CharField(max_length = 200, default="")
 
     thumbnail_url = models.URLField(default="")
 
+    account_set = models.ManyToManyField(Account, null=True)
     tag_set = models.ManyToManyField(Tag, null=True)
 
     objects = ChallengeManager()

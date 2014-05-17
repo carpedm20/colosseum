@@ -45,5 +45,5 @@ class AccountAuthForm(AuthenticationForm):
  
     def is_valid(self):
         form = super(AccountAuthForm, self).is_valid()
-        #print self.cleaned_data["username"]
+
         return form

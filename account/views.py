@@ -63,27 +63,30 @@ def follow(request):
 ########################
 
 def sign_in(request):
-    form = AccountAuthForm(request.POST or None)
+    form = AccountAuthForm(data = request.POST or None)
     template = 'account/sign_in.html'
+
+    next_url = request.POST.get("next", "/")
 
     if request.method == 'POST':
         if form.is_valid():
-            # Success
+            print "1!23"
+            print form.get_user()
             login(request, form.get_user())
-            next_url = request.POST.get("next_url", "/")
 
-            return redirect('/')
+            return redirect(next_url)
         else:
-            return render(request, template, {'form': form, 'nav_bar': True,})
+            print "2!23"
+            return render(request, template, {'form': form, 'nav_bar': True, 'next': next_url, })
 
-    return render(request, template, {'form': form, 'nav_bar': True,})
+    return render(request, template, {'form': form, 'nav_bar': True, 'next': next_url, })
 
 ########################
 # Sign up (Join)
 ########################
 
 def sign_up(request):
-    form = AccountCreateForm(request.POST or None)
+    form = AccountCreateForm(data = request.POST or None)
     template = 'account/sign_up.html'
 
     if request.method == 'POST':
