@@ -27,7 +27,6 @@ class Challenge(models.Model):
 
     thumbnail_url = models.URLField(default="")
 
-    account_set = models.ManyToManyField(Account, null=True)
     tag_set = models.ManyToManyField(Tag, null=True)
 
     objects = ChallengeManager()

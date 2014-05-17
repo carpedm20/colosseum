@@ -20,7 +20,7 @@ class Account(models.Model):
     def gravatar_middle_url(self):
         return "http://www.gravatar.com/avatar/%s?s=33" % hashlib.md5(self.user.username).hexdigest()
 
-    def get_id(self):
+    def account_id(self):
         return self.user.username.split('@')[0]
 
     def create_user_profile(sender, instance, created, **kwargs):

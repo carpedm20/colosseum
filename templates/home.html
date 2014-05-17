@@ -7,52 +7,28 @@
   <div id="right_column">
     {% include 'right_nav.html' %}
   </div>
+
   <div id="left_column">
-    <table class="table table-bordered col-sm-16">
-      <tr class="">
-        {% for challenge in challenges %}
-          {% if challenge.active %}
-            <td class="col-sm-3 info">
-          {% else %}
-            <td class="col-sm-3">
-          {% endif %}
-            <div>
-              <div class="challenge-schedule-date">
-                {{ challenge.start_date }} ~ {{ challenge.finish_date }}
-              </div>
-              <div>
-                <img src=""/>
-                {{ challenge.subject }}
-              </div>
+    {% include 'challenge/challenge_info.html' %}
+
+    <ol id="posts" class="posts">
+      {% for post in current_challenge.post_set.all %}
+        <li class="post-container">
+          <div class="post">
+            <div class="post-avatar">
+              <a class="pull-left" href="#">
+                <img class="thumbnail" src="{{ post.account.gravatar_url }}" alt=account_thumbnail">
+              </a>
             </div>
-          </td>
-        {% endfor %}
-      </tr>
-    </table>
-    <div class="challenge-info media">
-      <h2 class="challenge-info-header text-center">THIS WEEK HACKATHON</h2>
-        <img src="{{ current_challenge.thumbnail_url }}" class="challenge-info-thumbnail media-object thumbnail pull-left"/>
-        <div class="media-body">
-          <div class="media-heading">
-            <h1 class="pull-left">{{ current_challenge.subject }}</h1>
-            <div class="challenge-info-right pull-right">
-              <div>
-                <button class="btn btn-primary">
-                  <span class="glyphicon glyphicon-user"></span> User
-                  <span class="badge">{{ current_challenge.account_set.count }}</span>
-                </button>
-              </div>
-              <div>
-                <button class="btn btn-info">
-                  <span class="glyphicon glyphicon-star"></span> Star
-                  <span class="badge">4</span>
-                </button>
-                </div>
+            <div class="post-wrapper">
+              <h4 class="">Media heading</h4>
+              <p>{{ post.github_link }}</p>
+              {{ post.content | safe }}
             </div>
           </div>
-        </div>
-      {{ current_challenge.details }}
-    </div>
+        </li>
+      {% endfor %}
+    </ul>
   </div>
 
 {% endblock %}

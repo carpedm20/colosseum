@@ -1,0 +1,55 @@
+  <table class="table table-bordered col-sm-16">
+    <tr class="">
+      {% for challenge in challenges %}
+        {% if challenge.active %}
+          <td class="col-sm-3 info">
+        {% else %}
+          <td class="col-sm-3">
+        {% endif %}
+          <div>
+            <div class="challenge-schedule-date">
+              {{ challenge.start_date }} ~ {{ challenge.finish_date }}
+            </div>
+            <div>
+              <img src=""/>
+              {{ challenge.subject }}
+            </div>
+          </div>
+        </td>
+      {% endfor %}
+    </tr>
+  </table>
+
+  <div class="challenge-info media">
+    <h2 class="challenge-info-header text-center">THIS WEEK HACKATHON</h2>
+      <img src="{{ current_challenge.thumbnail_url }}" class="challenge-info-thumbnail media-object thumbnail pull-left"/>
+      <div class="media-body">
+        <div class="media-heading">
+          <h1 class="pull-left">{{ current_challenge.subject }}</h1>
+          <div class="challenge-info-right pull-right">
+            <div>
+              <button class="btn btn-primary">
+                <span class="glyphicon glyphicon-user"></span> 참가한 사람
+                <span class="badge">{{ current_challenge.post_set.count }}</span>
+              </button>
+            </div>
+            <div>
+              {% if not hide_create_btn %}
+                <form action="{% url 'post:create_post' current_challenge.id %}">
+                  {% if disable_create_btn %}
+                    <button class="btn btn-info" type="submit" disabled>
+                      <span class="glyphicon glyphicon-star"></span> 참가됨
+                    </button>
+                  {% else %}
+                    <button class="btn btn-info" type="submit">
+                      <span class="glyphicon glyphicon-star"></span> 참가하기
+                    </button>
+                  {% endif %}
+                </form>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+    {{ current_challenge.details }}
+  </div>

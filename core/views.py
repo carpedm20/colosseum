@@ -49,9 +49,17 @@ def home(request, challenge_id = None):
     else:
         current_challenge = Challenge.objects.get(id=chalenge_id)
 
+    current_account = get_account_from_user(request.user)
+    if current_challenge.post_set.filter(account = current_account):
+        disable_create_btn = True
+    else:
+        disable_create_btn = False
+
+
     return render(request,
                   template,
                   {'challenges': challenges,
+                   'disable_create_btn': disable_create_btn,
                    'current_challenge': current_challenge })
 
 def about(request):

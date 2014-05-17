@@ -11,5 +11,8 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
 
     url(r'^', include('core.urls', namespace='core')),
+    url(r'^c/', include('post.urls', namespace='post')),
     url(r'^account/', include('account.urls', namespace='account')),
+
+    (r'^summernote/', include('django_summernote.urls')),
 )
