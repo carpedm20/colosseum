@@ -1,8 +1,10 @@
 # Create your views here.
+from django.contrib.auth import authenticate, login, logout
 from django.conf import settings
 from django.core.urlresolvers import reverse
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, render_to_response, RequestContext, HttpResponseRedirect
+from django.core.paginator import Paginator
 
 from account.models import Account
 from account.forms import AccountCreateForm
@@ -34,20 +36,35 @@ def index(request):
 def home(request, challenge_id = None):
     template = 'home.html'
 
-    challenges = Challenge.objects.all().order_by('start_date')[:4]
+    challenges = Challenge.objects.all().order_by('start_date')
+
+    try:
+        current_challenge = Challenge.objects.get(id=challenge_id)
+    except:
+        current_challenge = challenges[len(challenges)-1]
+
+    NUM_PER_PAGE = 4
+
+    p = Paginator(challenges, NUM_PER_PAGE)
+    page_num = 1
+
+    for i in p.page_range:
+        if current_challenge in p.page(i).object_list:
+            page_num = i
+            break
+
+    page = p.page(page_num)
+
+    challenges = page.object_list
+
     now = datetime.now()
 
     for challenge in challenges:
         if challenge.start_date <= now.date() <= challenge.finish_date:
-            print "123"
             challenge.active = True
         else:
             challenge.active = False
 
-    if challenge_id is None:
-        current_challenge = challenges[len(challenges)-1]
-    else:
-        current_challenge = Challenge.objects.get(id=chalenge_id)
 
     current_account = get_account_from_user(request.user)
     if current_challenge.post_set.filter(account = current_account):
@@ -55,12 +72,18 @@ def home(request, challenge_id = None):
     else:
         disable_create_btn = False
 
+    for post in current_challenge.post_set.all():
+        post.like = True
 
     return render(request,
                   template,
                   {'challenges': challenges,
                    'disable_create_btn': disable_create_btn,
-                   'current_challenge': current_challenge })
+                   'current_challenge': current_challenge,
+                   'page_num_plus_1': page_num * NUM_PER_PAGE + 1,
+                   'page_num_minus_1': (page_num - 1) * NUM_PER_PAGE - 1,
+                   'has_next': page.has_next(),
+                   'has_previous': page.has_previous() })
 
 def about(request):
     pass

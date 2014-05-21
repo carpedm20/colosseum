@@ -1,31 +1,61 @@
   <table class="table table-bordered col-sm-16">
+    {% if has_previous %}
+      <div class="pull-left challenge-info-btn">
+        <form action="{% url 'core:home' page_num_minus_1 %}">
+          <button class="btn btn-success" type="submit">LEFT</button>
+        </form>
+      </div>
+    {% endif %}
     <tr class="">
       {% for challenge in challenges %}
-        {% if challenge.active %}
-          <td class="col-sm-3 info">
-        {% else %}
-          <td class="col-sm-3">
-        {% endif %}
-          <div>
-            <div class="challenge-schedule-date">
-              {{ challenge.start_date }} ~ {{ challenge.finish_date }}
-            </div>
+        <a href="{% url 'core:home' challenge.id %}">
+          {% if challenge.active %}
+            <td class="col-sm-3 info">
+          {% else %}
+            <td class="col-sm-3">
+          {% endif %}
             <div>
-              <img src=""/>
-              {{ challenge.subject }}
+              <div class="challenge-schedule-date">
+                {{ challenge.start_date }} ~ {{ challenge.finish_date }}
+              </div>
+              <div>
+                <img src=""/>
+                <a href="{% url 'core:home' challenge.id %}">
+                  {{ challenge.subject }}
+                </a>
+              </div>
             </div>
-          </div>
-        </td>
+          </td>
+        </a>
       {% endfor %}
     </tr>
+
+    {% if has_next %}
+      <div class="pull-right challenge-info-btn">
+        <form action="{% url 'core:home' page_num_plus_1 %}">
+          <button class="btn btn-success" type="submit">RIGHT</button>
+        </form>
+      </div>
+    {% endif %}
   </table>
 
   <div class="challenge-info media">
-    <h2 class="challenge-info-header text-center">THIS WEEK HACKATHON</h2>
+    {% if current_challenge.is_active %}
+      <h2 class="challenge-info-header text-center">Active HACKATHON</h2>
+    {% else %}
+      <h2 class="challenge-info-header text-center">Deactived HACKATHON</h2>
+    {% endif %}
       <img src="{{ current_challenge.thumbnail_url }}" class="challenge-info-thumbnail media-object thumbnail pull-left"/>
       <div class="media-body">
         <div class="media-heading">
-          <h1 class="pull-left">{{ current_challenge.subject }}</h1>
+          <div class="pull-left">
+            <h2>{{ current_challenge.subject }}</h2>
+            {% if current_challenge.d_day < 0 %}
+              <p>{{ current_challenge.d_day|stringformat:"+d"|slice:"1:" }}일 지났습니다</p>
+            {% else %}
+              <p>{{ current_challenge.d_day }}일 남았습니다</p>
+            {% endif %}
+          </div>
           <div class="challenge-info-right pull-right">
             <div>
               <button class="btn btn-primary">

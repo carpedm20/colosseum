@@ -2,14 +2,20 @@
 
 {% block unauthenticated_content %}
 
+{% load staticfiles %}
+
 <div class="jumbotron">
   <div class="container">
-    <div class="col-sm-7">
-      <h1 style="font-family: 'Hanna', serif; ">당신의 스터디,<br/> 안녕하신가요?</h1>
-      <p>지속 가능한 스터디 문화를 위한 <b>다다</b> 프로젝트</p>
-      <p>
-        <div class="fb-like" data-href="http://gyutae.herokuapp.com/" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div>
-      </p>
+    <div class="col-sm-7 text-center">
+      <br/>
+      <br/>
+      <div class="row">
+        <img src="{% static 'img/big_logo_black_with_moto.png' %}" id="logo" class="unicon-logo size_large" style="width: 90%; height: auto;"/>
+      <br/>
+      <br/>
+      <br/>
+      </div>
+      <p>매주 하나의 주제로</p><p>새로운 서비스를 만들고 공유하세요</p>
     </div>
     <div class="col-sm-5">
       <form role="form-horizontal" action="/account/sign_up/" method="post">{% csrf_token %}

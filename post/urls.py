@@ -13,6 +13,7 @@ urlpatterns = patterns('',
     url(r'^(?P<challenge_id>\d+)/create/$', views.create_post, name='create_post'),
     url(r'^(?P<challenge_id>\d+)/(?P<post_id>\d+)/edit/$', views.edit_post, name='edit_post'),
     url(r'^(?P<challenge_id>\d+)/(?P<post_id>\d+)/delete/$', views.delete_post, name='delete_post'),
+    url(r'^(?P<challenge_id>\d+)/(?P<post_id>\d+)/like/$', views.like_post, name='like_post'),
     url(r'^(?P<challenge_id>\d+)/(?P<post_id>\d+)/comment/$', views.create_comment, name='create_comment'),
     url(r'^(?P<challenge_id>\d+)/(?P<post_id>\d+)/comment/(?P<comment_id>\d+)/delete/$', views.delete_comment, name='delete_comment'),
 

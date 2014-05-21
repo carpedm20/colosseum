@@ -29,20 +29,20 @@
   <head>
     <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
     <title>
-      가입 | UNIST_Tumblr
+      콜로세움
     </title>
-    <meta name="title" content="다다" />
+    <meta name="title" content="콜로세움" />
     <meta property="og:type" content="website" />
     <meta property="og:image" content="http://3.bp.blogspot.com/-KBXXyz6h6RQ/U0n3gCOx3TI/AAAAAAAACnw/i_p6HkU9uRw/s1600/gyutae.png"/>
     <!--<meta property="og:image" content="http://gyutae.herokuapp.com/media/media/gyutae.png" />-->
     <meta property="og:url" content="http://gyutae.herokuapp.com/" />
-    <meta property="og:site_name" content="다다" />
-    <meta property="og:description" content="다다- 당신의 스터디, 안녕하신가요?" />
+    <meta property="og:site_name" content="콜로세움" />
+    <meta property="og:description" content="콜로세움 - 1 Week Hackathon" />
     <meta property="fb:app_id" content="1441103269468905" />
-    <meta name="description" content="다다">
+    <meta name="description" content="콜로세움">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="keywords" content="유니스트 다다, unist, 다다" />
+    <meta name="keywords" content="유니스트 콜로세움, unist, 콜로세움" />
 
     <!--
     start : 2014-03-28 10:46 am
@@ -98,7 +98,7 @@
 
   {% if not nav_bar %}
     <body class="body-with-nav-bar">
-      <div class="navbar navbar-inverse navbar-custom navbar-fixed-top" role="navigation">
+      <div id="header" class="navbar navbar-inverse navbar-custom navbar-fixed-top" role="navigation">
         <div class="navbar-content">
           <div class="container-fluid col-sm-15">
             <div class="navbar-header">
@@ -122,12 +122,12 @@
               </ul>
               {% endif %}
             </div>
-            <div class="navbar-collapse collapse">
+            
+            <div id="tabs_outer_container">
+              <a href="{% url 'account:sign_out' %}">
+                <span class="navbar-btn glyphicon glyphicon-off white"></span>
+              </a>
               <ul class="nav navbar-nav navbar-right navbar-right-search">
-                <li>
-                  <span class="glyphicon glyphicon-off
-"></span>
-                </li>
                 <li>
                   <form class="form-search form-inline nav-not-li">
                     <input type="text" class="form-control search-query" placeholder="Search..." />

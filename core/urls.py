@@ -6,5 +6,5 @@ urlpatterns = patterns('',
     # url(r'^blog/', include('blog.urls')),
 
     url(r'^$', 'core.views.index', name='index'),
-    url(r'^home/$', 'core.views.index', name='home'),
+    url(r'^home/(?P<challenge_id>\d+)/$', 'core.views.home', name='home'),
 )

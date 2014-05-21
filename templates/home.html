@@ -18,18 +18,40 @@
             <div class="post-avatar">
               <a class="pull-left" href="#">
                 <img class="thumbnail" src="{{ post.account.gravatar_url }}" alt=account_thumbnail">
+                {{ post.account.account_id }}
               </a>
             </div>
             <div class="post-wrapper">
-              <h4 class="">Media heading</h4>
               {% if user == post.account.user %}
                 <div class="pull-right">
-                  <button class="btn">
-                    Edit
-                  </button>
+                  <form action="{% url 'post:delete_post' current_challenge.id post.id %}">
+                    <button class="btn btn-warning" type="submit">
+                      삭제
+                    </button>
+                  </form>
+                </div>
+                <div class="pull-right">
+                  <form action="{% url 'post:edit_post' current_challenge.id post.id %}">
+                    <button class="btn btn-info post-edit-btn" type="submit">
+                      수정
+                    </button>
+                  </form>
+                </div>
+                <div class="pull-right">
+                  <form action="{% url 'post:like_post' current_challenge.id post.id %}">
+                    {% if post.like %}
+                      <button class="btn btn-primary post-edit-btn" type="submit">
+                    {% else %}
+                      <button class="btn btn-default post-edit-btn" type="submit">
+                    {% endif %}
+                      <span class="glyphicon glyphicon-thumbs-up"></span> 좋아요
+                      <span class="badge">{{ post.liked_account_set.count }}</span>
+                    </button>
+                  </form>
                 </div>
               {% endif %}
-              <p>{{ post.github_link }}</p>
+              <h4 class="">{{ post.name }}</h4>
+              <p><img class="github-icon" src="{% static 'img/github.png' %}"/> <a href="{{ post.github_link }}">{{ post.github_link}}</a></p>
               {{ post.content | safe }}
             </div>
           </div>

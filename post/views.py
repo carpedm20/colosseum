@@ -6,6 +6,7 @@ from django.core.urlresolvers import reverse
 from .forms import PostForm, CommentForm
 from .models import Post, Comment
 from challenge.models import Challenge
+from core.views import home
 
 import sys
 from utils.func import *
@@ -84,7 +85,7 @@ def create_post(request, challenge_id=None):
             post = form.save(commit=False)
             post.save()
 
-            return HttpResponseRedirect(reverse('core:home'))
+            return HttpResponseRedirect(reverse('core:home', args=(challenge_id)))
         else:
             return create_post_view(request, challenge_id)
 
@@ -130,7 +131,19 @@ def delete_post(request, challenge_id=None, post_id=None):
     instance = Post.objects.get(id=post_id)
     instance.delete()
 
-    return HttpResponseRedirect(reverse('core:home'))
+    return HttpResponseRedirect(reverse('core:home', args=(challenge_id)))
+
+@login_required
+def like_post(request, challenge_id=None, post_id=None):
+    instance = Post.objects.get(id=post_id)
+    current_account = get_account_from_user(request.user)
+
+    if current_account in instance.liked_account_set.all():
+        instance.liked_account_set.remove(current_account)
+    else:
+        instance.liked_account_set.add(current_account)
+
+    return HttpResponseRedirect(reverse('core:home', args=(challenge_id)))
 
 @login_required
 def edit_post_view(request, challenge_id, post_id):

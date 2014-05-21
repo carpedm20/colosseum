@@ -34,6 +34,21 @@ class Challenge(models.Model):
     def __unicode__(self):
         return self.subject
 
+    def is_active(self):
+        now = datetime.datetime.now()
+
+        if self.start_date <= now.date() <= self.finish_date:
+            return True
+        else:
+            return False
+
+    def d_day(self):
+        now = datetime.datetime.now()
+
+        d_day = now.date() - self.finish_date
+
+        return -int(d_day.total_seconds()/60/60/24)
+
     def current_phase(self):
         now = datetime.datetime.now()
 

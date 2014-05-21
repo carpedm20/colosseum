@@ -13,10 +13,15 @@ class Post(models.Model):
     tag_set = models.ManyToManyField(Tag, blank=True, null=True)
 
     account = models.ForeignKey(Account)
-    created_at  = models.DateTimeField(auto_now_add=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    liked_account_set = models.ManyToManyField(Account, null=True, related_name="account_set")
 
     def __unicode__(self):
         return self.name
+
+    def like_count(self):
+        return len(liked_account_set)
 
 class Comment(models.Model):
     content = models.TextField(blank=False)

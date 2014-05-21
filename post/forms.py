@@ -9,14 +9,12 @@ from tag.models import Tag
 
 class PostForm(forms.ModelForm):
     name = forms.CharField(label="Post name")
-    github_link = forms.CharField(label="Github link", widget=forms.TextInput(attrs={'size' : 80}), required=True)
+    github_link = forms.CharField(label="Github link", widget=forms.TextInput(attrs={'size' : 80}), initial="http://github.com/", required=True)
     content = forms.CharField(widget=SummernoteWidget(), help_text='사진은 드래그 앤 드롭으로 첨부 가능합니다 :)')
     
-    tag_set = forms.ModelMultipleChoiceField(queryset=Tag.objects.all(), required=False)
- 
     class Meta:
         model = Post
-        fields = ['name', 'github_link', 'content', 'tag_set']
+        fields = ['name', 'github_link', 'content', ]
 
     def __init__(self, user=None, challenge_id=None, post_id=None, *args, **kwargs):
         self._user = user
@@ -39,9 +37,9 @@ class PostForm(forms.ModelForm):
             self._post.name = self.cleaned_data["name"]
             self._post.content = self.cleaned_data["content"]
 
-            self._post.tag_set.all().delete()
-            for tag in self.cleaned_data["tag_set"]:
-                self._post.tag_set.add(tag)
+            #self._post.tag_set.all().delete()
+            #for tag in self.cleaned_data["tag_set"]:
+            #    self._post.tag_set.add(tag)
 
             self._post.save()
 
@@ -58,8 +56,8 @@ class PostForm(forms.ModelForm):
                     account = Account.objects.get(user=self._user))
         post.save()
 
-        for tag in self.cleaned_data["tag_set"]:
-            post.tag_set.add(tag)
+        #for tag in self.cleaned_data["tag_set"]:
+        #    post.tag_set.add(tag)
 
         post.save()
 
@@ -75,7 +73,6 @@ class PostForm(forms.ModelForm):
 
 
 class CommentForm(forms.ModelForm):
-    #content = forms.CharField(widget=SummernoteWidget())
     content = forms.CharField(widget=forms.Textarea(attrs={'width': '100%', 'cols': 80, 'rows': 5}))
     
     class Meta:

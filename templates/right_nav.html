@@ -13,12 +13,9 @@
       <ul class="nav navbar-nav">
         <li><a href="#">{{ user.username }}</a></li>
         <li class="divider"></li>
-        {% for challenge in user.account.challenge_set.all %}
-          <li><a href="#">Menu Item 2</a></li>
+        {% for post in user.account.post_set.all %}
+          <li><a href="{% url 'core:home' post.challenge.id %}">{{ post.challenge.subject }}</a></li>
         {% endfor %}
-        <li><a href="#">Menu Item 3</a></li>
-        <li><a href="#">Menu Item 4</a></li>
-        <li><a href="#">Reviews <span class="badge">1,118</span></a></li>
       </ul>
     </div><!--/.nav-collapse -->
   </div>

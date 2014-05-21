@@ -43,6 +43,7 @@ INSTALLED_APPS = (
     'core',
     'challenge',
     'post',
+    'file',
     'account',
     'tag',
 )
@@ -100,7 +101,6 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 
 TEMPLATE_DIRS = (
     os.path.join(BASE_DIR, 'templates'),
-    os.path.join(BASE_DIR, 'multiuploader/templates'),
 )
 
 if DEBUG:
