@@ -1,7 +1,5 @@
 ![alt_tag](http://2.bp.blogspot.com/-s0dLQMSnXmQ/U32V45sDBVI/AAAAAAAADzI/8BaDyXDF1OI/s1600/square_logo.png)
 
-1 week Hackathon.
-
 No winners, just practice.
 
 (Could be extremely hard...)
@@ -18,7 +16,7 @@ By doing this project, I hope many CS students can practice their programming an
 Screenshot
 ----------
 
-![alt_tag](http://1.bp.blogspot.com/-Q0xrW-YOlys/U32WJzy6w9I/AAAAAAAADzQ/axTUg9m1mJ8/s1600/KakaoTalk_20140521_185709082.png)
+![alt_tag](http://2.bp.blogspot.com/--xYuvgDAhPs/U32YgO9FLLI/AAAAAAAADzk/ETZGsDzg2Rk/s1600/screenshot.png)
 
 
 콜로세움
